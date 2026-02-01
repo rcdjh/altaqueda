@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualização de Conversa</title>
+    <title>Alta Queda - Paraquedismo</title>
     <style>
+        /* Estilos Globais */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: #0f172a;
             color: white;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            overflow: hidden;
-            position: relative;
+            overflow-x: hidden;
         }
 
         /* Fundo com Triângulos */
         .bg-triangles {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -31,43 +31,65 @@
 
         .triangle {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.4;
             filter: blur(2px);
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         }
 
-        .t1 { width: 400px; height: 400px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); top: -100px; left: -50px; }
-        .t2 { width: 300px; height: 300px; background: linear-gradient(45deg, #8b5cf6, #6d28d9); bottom: -50px; right: -50px; }
+        .t1 { width: 300px; height: 300px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); top: -50px; left: -50px; }
+        .t2 { width: 250px; height: 250px; background: linear-gradient(45deg, #8b5cf6, #6d28d9); bottom: 10%; right: -30px; }
+        .t3 { width: 150px; height: 150px; background: #06b6d4; top: 40%; left: 10%; opacity: 0.2; }
 
-        /* Container da Imagem Centralizada */
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            max-width: 90%; /* Responsividade */
-            max-height: 90vh;
+        /* Navegação (Botões) */
+        nav {
+            margin-top: 30px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 10;
         }
 
-        img {
+        .btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Container da Imagem Central */
+        .main-content {
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-content img {
             max-width: 100%;
-            max-height: 70vh; /* Não deixa a imagem ser maior que a tela */
-            border-radius: 8px;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        h2 {
-            margin-top: 15px;
-            font-weight: 300;
-            font-size: 1.2rem;
-            color: #94a3b8;
-        }
+        h1 { font-weight: 300; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -75,11 +97,20 @@
     <div class="bg-triangles">
         <div class="triangle t1"></div>
         <div class="triangle t2"></div>
+        <div class="triangle t3"></div>
     </div>
 
-    <div class="container">
-        <img src="image_22f039.png" alt="Conversa Alta Queda">
-        <h2>Visualização do Registro</h2>
+    <nav>
+        <a href="#" class="btn">Home</a>
+        <a href="#" class="btn">Agende seu Pulo</a>
+        <a href="#" class="btn">Dicas para Pulo Seguro</a>
+        <a href="#" class="btn">Quem Somos</a>
+    </nav>
+
+    <div class="main-content">
+        <h1>ALTA QUEDA</h1>
+        <img src="image_22f039.png" alt="Conversa de Registro">
+        <p>Prepare-se para a melhor experiência da sua vida.</p>
     </div>
 
 </body>
