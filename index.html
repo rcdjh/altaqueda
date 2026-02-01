@@ -3,115 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta Queda - Paraquedismo</title>
+    <title>Alta Queda - Rope Jump & Rapel</title>
     <style>
-        /* Estilos Globais */
+        :root {
+            --primary-color: #f39c12; /* Laranja aventura */
+            --dark-color: #1a1a1a;
+            --light-color: #f4f4f4;
+        }
+
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background-color: #0f172a;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
         }
 
-        /* Fundo com Triângulos */
-        .bg-triangles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .triangle {
-            position: absolute;
-            opacity: 0.4;
-            filter: blur(2px);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .t1 { width: 300px; height: 300px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); top: -50px; left: -50px; }
-        .t2 { width: 250px; height: 250px; background: linear-gradient(45deg, #8b5cf6, #6d28d9); bottom: 10%; right: -30px; }
-        .t3 { width: 150px; height: 150px; background: #06b6d4; top: 40%; left: 10%; opacity: 0.2; }
-
-        /* Navegação (Botões) */
-        nav {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .btn:hover {
-            background: #3b82f6;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        /* Container da Imagem Central */
-        .main-content {
-            margin-top: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        header {
+            background-color: #000;
+            padding: 1rem 0;
             text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .container {
             max-width: 800px;
-            width: 90%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        .main-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        /* Estilo da Seção de Conteúdo */
+        #home-content {
+            display: none; /* Começa escondido */
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+            animation: fadeIn 0.8s ease-in-out forwards;
         }
 
-        h1 { font-weight: 300; letter-spacing: 2px; }
+        h1 { color: var(--primary-color); margin-top: 0; }
+        h2 { color: var(--primary-color); }
+
+        .intro-text {
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+
+        .welcome-msg {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-triangles">
-        <div class="triangle t1"></div>
-        <div class="triangle t2"></div>
-        <div class="triangle t3"></div>
-    </div>
-
+<header>
+    <h1>ALTA QUEDA</h1>
     <nav>
-        <a href="#" class="btn">Home</a>
-        <a href="#" class="btn">Agende seu Pulo</a>
-        <a href="#" class="btn">Dicas para Pulo Seguro</a>
-        <a href="#" class="btn">Quem Somos</a>
+        <button class="nav-btn" onclick="showHome()">HOME</button>
     </nav>
+</header>
 
-    <div class="main-content">
-        <h1>ALTA QUEDA</h1>
-        <img src="image_22f039.png" alt="Conversa de Registro">
-        <p>Prepare-se para a melhor experiência da sua vida.</p>
+<div class="container">
+    <div id="welcome-area" class="welcome-msg">
+        <h2>Pronto para o próximo desafio?</h2>
+        <p>Clique no botão <strong>HOME</strong> acima para conhecer nossa história.</p>
     </div>
+
+    <section id="home-content">
+        <h2>Rope Jump | Curso | Rapel</h2>
+        <p class="intro-text">
+            A <strong>Alta Queda</strong> é uma empresa especializada em turismo de esporte e aventura, 
+            com foco em atividades radicais, especialmente o <strong>rope jump</strong>, que é uma 
+            modalidade de salto em altura utilizando cordas. A empresa foi criada e é liderada por 
+            <strong>Danilo Druzian</strong>, que transformou sua paixão por esportes radicais em um negócio.
+        </p>
+        <p class="intro-text">
+            A Alta Queda se destaca no mercado por oferecer experiências únicas e seguras em locais como 
+            pontes e outras estruturas elevadas, onde os participantes podem vivenciar a adrenalina do salto. 
+            Além dos eventos de rope jump, a empresa se posiciona como uma referência para aqueles que buscam 
+            aventuras com emoção e segurança, proporcionando aos clientes uma experiência memorável em contato 
+            com a natureza e desafiando os limites pessoais.
+        </p>
+    </section>
+</div>
+
+<script>
+    function showHome() {
+        // Esconde a mensagem de boas-vindas
+        document.getElementById('welcome-area').style.display = 'none';
+        
+        // Exibe o conteúdo principal
+        const content = document.getElementById('home-content');
+        content.style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
